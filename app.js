@@ -43,19 +43,19 @@ function broswerStart(){
 //-------------------------------------------------------/loop function definitions-----------------------------------------------
 
 //-----------------------------------------------------main process in order-----------------------------------------------------
-    gl.makeProgramFromURI('https://wsxmax.github.io/MaterialBrowser/shaders/defaultShaders/vertexShaderGLSL','https://wsxmax.github.io/MaterialBrowser/shaders/defaultShaders/fragmentShaderGLSL',function(renderProgram){
+    gl.makeProgramFromURI('https://wsxmax.github.io/3dModelBrowser/shaders/defaultShaders/vertexShaderGLSL','https://wsxmax.github.io/3dModelBrowser/shaders/defaultShaders/fragmentShaderGLSL',function(renderProgram){
       gl.defaultProgram = renderProgram;
       programReady = true;
       if (sceneReady) gl.prepareForRender(mainScene,beginLoop);
     });
-    loadGltfFile('https://wsxmax.github.io/MaterialBrowser/gltf/suzanne.gltf',function(jsonObject){
+    loadGltfFile('https://wsxmax.github.io/3dModelBrowser/gltf/suzanne.gltf',function(jsonObject){
       const gltfObject = jsonObject;
       mainScene = gltfObject.scenes[gltfObject.scene];
       console.log('scene loaded:');
       console.log(mainScene);
       gltfObject.loadImagesFromPath(gltfObject.originalPath);
       gltfObject.loadBufferFromPath(gltfObject.originalPath,function(){
-        mainScene.skybox = new skybox('https://wsxmax.github.io/MaterialBrowser/skybox/textures.png');
+        mainScene.skybox = new skybox('https://wsxmax.github.io/3dModelBrowser/skybox/textures.png');
         gl.bufferObject(gltfObject);
         sceneReady = true;
         if (programReady) gl.prepareForRender(mainScene,beginLoop);
